@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleRegistro.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Registro</h1>
+
+    <div class="contenedor">
+        <form action="php/user-admin.php" method="post">
+
+            <label for="identificacion">Numero de Identificacion: <br /> </label>
+            <input type="text" name="identificacion" id="identificacion" maxlength="20"> <br />
+            <label for="nombre">Nombres: <br /> </label>
+            <input type="text" name="nombre" id="nombre" maxlength="100"> <br />
+            <label for="apellidos">Apellidos: <br /> </label>
+            <input type="text" name="apellidos" id="apellidos" maxlength="100"> <br />
+            <label for="Email">Email: </label> <br />
+            <input type="email" name="email" id="email" maxlength="150"> <br />
+
+            <p>Tipo: <br /></p>
+            <select name="tipo" id="tipo">
+                <option value="Profesor">Profesor</option>
+                <option value="Administrativo">Administrativo</option>
+            </select> <br />
+         
+            <label for="user">Usuario: <br /> </label>
+            <input type="user" name="user" id="user"> <br />
+
+            <label for="password">Contraseña: <br /> </label>
+            <input type="password" name="password" id="password" minlength="6"> <br />
+
+            <p>Dependencia/Programa: <br /></p>
+            <select name="programa" id="programa">
+                <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
+                <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                <option value="Ingenieria de Alimentos">Ingenieria de Alimentos</option>
+                <option value="Ingenieria Agronomica">Ingenieria Agronomica</option>
+                <option value="Ingenieria Ambiental">Ingenieria Ambiental</option>
+            </select> <br />
+
+            <input type="submit" value="Registrar Usuario">
+
+        </form>
+    </div>
+
+</body>
+
+</html>
