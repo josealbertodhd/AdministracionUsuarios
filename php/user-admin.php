@@ -6,11 +6,13 @@ $apellidos = $_POST['apellidos'];
 $email = $_POST['email'];
 $tipo = $_POST['tipo'];
 $username = $_POST['user'];
-$password = $_POST['password'];
 $programa = $_POST['programa'];
 $activo = 0;
 
-echo "Hola";
+//$salt = "83ijwkkwe339wwkwo39" . $_POST['password']; 
+$salt = bin2hex(random_bytes(6));
+$password = password_hash($_POST['password'] , PASSWORD_BCRYPT);
+
 var_dump($_POST);
 
 try {
@@ -20,7 +22,7 @@ try {
     die();
 }
 
-$sql = "INSERT INTO usuarios 
+$sql = "INSERT INTO usuarios
 (identificacion, nombres, apellidos, email, tipo_user, username, password, programa, activo) 
 VALUES
 (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -46,4 +48,10 @@ if(!$sth->execute()){
 
 echo "todo okey";
 
-?>
+/*if (password_verify($_POST['password'], $password)) {
+    echo 'La contraseña es válida!';
+} else {
+    echo 'La contraseña no es válida.';
+}*/
+
+?>  

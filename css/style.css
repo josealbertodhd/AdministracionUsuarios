@@ -81,25 +81,17 @@ form{
     display: block;
     border-radius: 10px;
     padding: 10px;
-    width: 80%;
+    width: 45%;
 }
 
 .contenedor .botones a:first-child{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: block;
     border-radius: 10px;
-    height: 40px;
-    width: 120px;
-    font-size: 15px;
-    font-weight: bold;
+    padding: 10px;
+    width: 45%;
     color: rgb(0, 163, 238) ;
     border: 2px solid rgb(0, 163, 238);
-    border-radius: 10px;
-    
 }
-
 
 
 .contenedor .botones a:nth-child(2){
@@ -109,13 +101,19 @@ form{
     justify-content: center;
     border-radius: 10px;
     height: 40px;
-    width: 120px;
+    width: 45%;
     font-size: 15px;
     font-weight: bold;
     color: rgb(0, 163, 238) ;
     border: 2px solid rgb(0, 163, 238);
     border-radius: 10px;
     
+}
+
+.contenedor a{
+    display:flex;
+    text-align: center;
+    justify-content: center;
 }
 
 
