@@ -1,5 +1,10 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'C:\xampp\htdocs\trabajoproyecto\vendor\autoload.php';
+
 $identificacion = $_POST['identificacion'];
 $nombre = $_POST['nombre'];
 $apellidos = $_POST['apellidos'];
@@ -46,12 +51,57 @@ if(!$sth->execute()){
     echo "Datos registrados";
 }
 
-echo "todo okey";
+$hashIni = hash("sha256", $password);
 
-/*if (password_verify($_POST['password'], $password)) {
-    echo 'La contraseña es válida!';
+$hashPoli = hash("sha256", $password);
+
+$mail = new PHPMailer();
+
+
+$mail->isSMTP();
+$mail->SMTPDebug = SMTP::DEBUG_OFF;
+
+//Set the hostname of the mail server
+$mail->Host = 'smtp.gmail.com';
+$mail->Port = 465;
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+$mail->SMTPAuth = true;
+$mail->Username = 'towermass.net@gmail.com';
+$mail->Password = 'mwzivcjmfffcgohi';
+$mail->setFrom('towermass.net@gmail.com', 'Jose Alberto De Hoyos');
+$mail->addAddress($email, $nombre);
+$mail->Subject = 'Recuperacion de contraseña';
+$mensaje = "<h1> Bienvenido a nuestra Plataforma </h1>
+            <a href='https://www.youtube.com/'>Haga click en el enlace para acceder a nuestra pagina</a>";
+//Read an HTML message body from an external file, convert referenced images to embedded,
+//convert HTML into a basic plain-text alternative body ::file_get_contents('contents.html')
+
+$mail->msgHTML($mensaje);
+$mail->AltBody = 'This is a plain-text message body';
+
+if (!$mail->send()) {
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
 } else {
-    echo 'La contraseña no es válida.';
-}*/
+    echo 'Message sent!';
+    //Section 2: IMAP
+    //Uncomment these to save your message in the 'Sent Mail' folder.
+    #if (save_mail($mail)) {
+    #    echo "Message saved!";
+    #}
+}
+
+function save_mail($mail)
+{
+    //You can change 'Sent Mail' to any other folder or tag
+    $path = '{imap.gmail.com:993/imap/ssl}[Gmail]/Sent Mail';
+
+    //Tell your server to open an IMAP connection using the same username and password as you used for SMTP
+    $imapStream = imap_open($path, $mail->Username, $mail->Password);
+
+    $result = imap_append($imapStream, $path, $mail->getSentMIMEMessage());
+    imap_close($imapStream);
+
+    return $result;
+}
 
 ?>  
