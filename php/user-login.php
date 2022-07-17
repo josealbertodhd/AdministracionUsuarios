@@ -12,7 +12,7 @@
         die();
     }
 
-  $sql = "SELECT tipo_user, username, password FROM usuarios WHERE (username = ?)";
+  $sql = "SELECT tipo_user, username, password FROM usuario WHERE (username = ?)";
   $sth = $conexion->prepare($sql);
   $sth->bindParam(1, $username, PDO::PARAM_STR);
 
